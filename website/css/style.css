@@ -1,0 +1,135 @@
+/* Based on Gruvbox colors: https://github.com/Xe/gruvbox-css */
+:root {
+    --max-width: 50rem;
+}
+
+.theme-dark {
+    --bg-color: #282828;
+    --bg-alt-color: #fbf1c7;
+    --text-color: #ebdbb2;
+    --text-alt-color: #3c3836;
+    --text-hdr-color: #98971a;
+    --sel-color: #d3869b;
+    --code-bg-color: #3c3836;
+    --link-color: #b16286;
+    --link-visited-color: #a89984;
+    --link-bg-color: #1d2021;
+    --border-color: #bdae93;
+}
+
+.theme-light {
+    --bg-color: #fbf1c7;
+    --bg-alt-color: #282828;
+    --text-color: #3c3836;
+    --text-alt-color: #ebdbb2;
+    --text-hdr-color: #79740e;
+    --sel-color: #d3869b;
+    --code-bg-color: #ebdbb2;
+    --link-color: #b16286;
+    --link-bg-color: #f9f5d7;
+    --border-color: #655c54;
+}
+
+::selection { background: var(--bg-color); }
+
+#content {
+    margin:0 auto;
+    max-width: var(--max-width);
+}
+
+@media(max-width:var(--max-width)) {
+    #content {
+        padding: 10px;
+    }
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.2em; font-style: italic; }
+h1, h2, h3, h4, h5 {
+    color: var(--text-hdr-color);
+    font-family: "Merriweather Sans";
+    margin-bottom: .1rem;
+}
+
+p { font-family: "Merriweather"; font-size: 1em; line-height: 1.5em; }
+
+body {
+    margin: 0;
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+
+pre, code {
+    border: 0;
+    font-size: 1em;
+    font-family: "Fira Code";
+    font-weight: 400;
+    background-color: var(--code-bg-color);
+}
+
+a, a:active {
+    color: var(--link-color);
+    background-color: var(--link-bg-color);
+}
+
+a:hover {
+    color: var(--text-color);
+    background-color: var(--sel-color);
+}
+
+a:visited {
+    color: var(--link-visited-color)
+}
+
+a:visited:hover {
+    color: var(--text-color);
+    background-color: var(--sel-color);
+}
+
+blockquote {
+    margin: 0.5em 10px;
+    padding: 0.5em 10px;
+    border-left: 1px solid var(--border-color);
+}
+
+header {
+    color: var(--text-alt-color);
+    background-color: var(--bg-alt-color);
+}
+
+header nav {
+    font-size: 1.25em;
+    padding: 0.75em 0.5em;
+    max-width:var(--max-width);
+    margin: 0 auto;
+}
+
+header nav ul { display: inline; padding: 0; }
+header nav ul li { display: inline; bullet: none; }
+header nav ul li a {
+    padding: 0.75em 0.5em;
+    font-variant: small-caps;
+    color: var(--text-alt-color);
+    background-color: var(--bg-alt-color);
+}
+
+header nav ul li a:visited {color: var(--text-alt-color);}
+header nav ul li a:hover,
+header nav ul li a:hover:visited
+{
+    color: var(--text-alt-color);
+    background-color: var(--sel-color);
+    border-bottom: 5px solid var(--link-color);
+}
+
+footer {
+    align: center;
+}
+
+#meta {
+    text-indent: 0;
+    line-height: 1.25em;
+    font-size: .85em;
+    font-family: "Merriweather Sans";
+}
