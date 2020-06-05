@@ -105,3 +105,12 @@ footer {
     font-size: .85em;
     font-family: "Merriweather Sans";
 }
+
+/* Styling for post extract in the index  */
+
+.post-title {}
+.post-meta {
+    margin: 0;
+    font-size: 0.85em;
+    font-family: "Merriweather Sans";
+}

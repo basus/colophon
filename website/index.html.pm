@@ -32,3 +32,7 @@ Colophon currently has the following components:
   action, used to test features and guide development.
 
 }
+
+◊h1{Recent}
+
+◊(make-index "posts/")
