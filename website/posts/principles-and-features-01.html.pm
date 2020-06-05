@@ -5,6 +5,10 @@
               modified "2020-06-03"
 )
 
+Here are some thoughts on principles guiding the development of Colophon and the
+features they imply.
+
+◊more{}
 
 ◊h2{Reuse Existing Tools Where Possible}
 
