@@ -31,7 +31,7 @@
   `(head
     ,@(meta:defaults)
     ,(head:title)
-    ,@(head:stylesheets "/css/fonts.css" "/css/style.css")))
+    ,@(head:stylesheets "/css/fonts.css" "/css/style.css" "/css/gruvbox.css")))
 
 (define (default-navigation)
   `(header ,(navigation "Colophon" "Posts" "Drafts" "Series")))
@@ -52,3 +52,6 @@
 
 (require pollen/html5)
 (provide (all-from-out pollen/html5))
+
+(require colophon/components)
+(provide (all-from-out colophon/components))
