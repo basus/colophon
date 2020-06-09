@@ -27,24 +27,38 @@
   `(nav (ul ,first ,@links)))
 
 ;; Default code snippets, mostly for inclusion in templates
-(define (default-head)
+(define (head-with #:title [title (head:title)]
+                   #:fonts [fonts "/css/fonts.css"]
+                   #:style [style "/css/style.css"]
+                   #:theme [theme "/css/theme.css"])
   `(head
     ,@(meta:defaults)
-    ,(head:title)
-    ,@(head:stylesheets "/css/fonts.css" "/css/style.css" "/css/gruvbox.css")))
+    ,title
+    ,@(head:stylesheets fonts style theme)))
+
+(define (default-head) (head-with))
 
 (define (default-navigation)
   `(header ,(navigation "Colophon" "Posts" "Drafts" "Series")))
 
 (define (body-with #:id [id #f]
+                   #:theme-variant [thvar #f]
                    #:class [cls #f]
                    #:navigation [nav (default-navigation)]
                    #:contents contents)
-  (let ((attrs (match* (id cls)
+  (let* ((th (if thvar (string-append "theme-" thvar) #f))
+
+         (clss (match* (cls th)
+                [ [#f #f] #f ]
+                [ [#f th] th ]
+                [ [cl #f] cl ]
+                [ [cl th] (string-join (list th cl) " ")]))
+
+        (attrs (match* (id clss)
                  [ [#f #f] '() ]
                  [ [id #f] `((id ,id)) ]
-                 [ [#f cls] `((class ,cls)) ]
-                 [ [id cls] `((class ,cls) (id ,id)) ]
+                 [ [#f clss] `((class ,clss)) ]
+                 [ [id clss] `((class ,clss) (id ,id)) ]
                  )))
   `(body ,attrs ,nav ,contents)))
 

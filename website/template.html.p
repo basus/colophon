@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  ◊(->html (default-head))
+  ◊(->html (head-with #:theme "/css/grayscale.css"))
   ◊(->html (body-with
-            #:class "theme-dark"
+            #:theme-variant "dark"
             #:contents `(div ((id "content"))
                              ,@(select* 'root doc))))
 
