@@ -2,7 +2,10 @@
     --max-width: 50rem;
 }
 
-::selection { background: var(--bg-color); }
+::selection {
+    color: var(--text-sel-color);
+    background: var(--bg-sel-color);
+}
 
 #content {
     margin:0 auto;
@@ -43,20 +46,24 @@ pre, code {
 a, a:active {
     color: var(--link-color);
     background-color: var(--link-bg-color);
+    text-decoration: none;
 }
 
 a:hover {
     color: var(--text-color);
     background-color: var(--sel-color);
+    text-decoration: none;
 }
 
 a:visited {
-    color: var(--link-visited-color)
+    color: var(--link-visited-color);
+    text-decoration: none;
 }
 
 a:visited:hover {
     color: var(--text-color);
     background-color: var(--sel-color);
+    text-decoration: none;
 }
 
 blockquote {
@@ -90,8 +97,8 @@ header nav ul li a:visited {color: var(--text-alt-color);}
 header nav ul li a:hover,
 header nav ul li a:hover:visited
 {
-    color: var(--text-alt-color);
-    background-color: var(--sel-color);
+    color: var(--text-sel-color);
+    background-color: var(--bg-sel-color);
     border-bottom: 5px solid var(--link-color);
 }
 

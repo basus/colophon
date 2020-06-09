@@ -4,6 +4,7 @@
 .theme-dark {
     --bg-color: #282828;
     --bg-alt-color: #fbf1c7;
+    --bg-sel-color: #d3869b;
     --text-color: #ebdbb2;
     --text-alt-color: #3c3836;
     --text-hdr-color: #98971a;
@@ -11,15 +12,16 @@
     --link-color: #b16286;
     --link-visited-color: #a89984;
     --link-bg-color: #1d2021;
-    --sel-color: #d3869b;
     --border-color: #bdae93;
 }
 
 .theme-light {
     --bg-color: #fbf1c7;
     --bg-alt-color: #282828;
+    --bg-sel-color: #d3869b;
     --text-color: #3c3836;
     --text-alt-color: #ebdbb2;
+    --text-sel-color: #3c3836;
     --text-hdr-color: #79740e;
     --code-bg-color: #ebdbb2;
     --link-color: #b16286;
