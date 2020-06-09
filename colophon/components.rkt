@@ -33,14 +33,15 @@
       (hr)
       )))
 
-(define (make-summary metas doc output-path #:break-tag [break-tag 'more])
+(define (make-summary metas doc output-path
+                      #:break-tag [break-tag 'more])
   (let* ((title    (select-from-metas 'title metas))
          (subtitle  (select-from-metas 'subtitle metas))
          (started   (select-from-metas 'started metas))
          (published (select-from-metas 'published metas))
          (modified  (select-from-metas 'modified metas))
          (excerpt   (select-from-metas 'excerpt metas))
-         (post      (path->string (file-name-from-path output-path)))
+         (post      (path->string output-path))
 
          (title-txt
           (if title `(h2 ((class "post-title")) ,title) ""))
@@ -75,7 +76,7 @@
 ;; made more intelligent later.
 (define (make-index d)
   (define (summarize f)
-    (let ((cf (path->complete-path f )))
+    (let ((cf f))
       (if (indexable-source? cf)
           (make-summary (cached-metas cf) (cached-doc cf)
                         (->output-path cf)) "" )))
