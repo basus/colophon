@@ -4,12 +4,18 @@
          (prefix-in link: colophon/link)
          racket/string
          txexpr xml/path
+         colophon/common
          pollen/core pollen/decode pollen/template)
 
 (define (root . items)
   (define (clean-break e) (decode-linebreaks e "\n"))
   (define (breakless-paragraphs items)
     (decode-paragraphs items 'p #:linebreak-proc clean-break))
+
+  (define remove-more
+    (match-lambda
+      [(txexpr more-tag _ _) '()]
+      [tx (wrap-hanging-quotes tx)]))
 
   (decode (txexpr 'root '() items)
           #:txexpr-elements-proc breakless-paragraphs

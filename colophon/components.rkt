@@ -3,7 +3,7 @@
 (require racket/format
          txexpr
          pollen/cache pollen/core pollen/decode pollen/file
-         "predicates.rkt")
+         "common.rkt" "predicates.rkt")
 
 ;; Generate the top-matter. For posts, this is the title, subtitle, and relevant
 ;; dates (started, modification and publication).
@@ -34,7 +34,7 @@
       )))
 
 (define (make-summary metas doc output-path
-                      #:break-tag [break-tag 'more])
+                      #:break-tag [break-tag more-tag])
   (let* ((title    (select-from-metas 'title metas))
          (subtitle  (select-from-metas 'subtitle metas))
          (started   (select-from-metas 'started metas))
@@ -79,7 +79,8 @@
     (let ((cf f))
       (if (indexable-source? cf)
           (make-summary (cached-metas cf) (cached-doc cf)
-                        (->output-path cf)) "" )))
+                        (->output-path cf))
+          "" )))
 
   (let* ((files (directory-list d #:build? #t))
          (summaries (map summarize files)) )

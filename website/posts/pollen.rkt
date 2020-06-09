@@ -2,8 +2,9 @@
 
 (require racket/format racket/path
          txexpr
-         colophon/components colophon/predicates
-         pollen/cache pollen/core pollen/decode pollen/file )
+         colophon/common colophon/components colophon/predicates
+         pollen/cache pollen/core pollen/decode pollen/file)
+
 (require "../pollen.rkt")
 
 (module setup racket/base
