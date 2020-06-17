@@ -3,6 +3,7 @@
 ◊(define-meta title "Key Principles and Features"
               started "2020-05-15"
               modified "2020-06-03"
+              published "2020-06-05"
 )
 
 Here are some thoughts on principles guiding the development of Colophon and the
