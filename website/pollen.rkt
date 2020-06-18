@@ -23,6 +23,14 @@
           #:string-proc (compose1 smart-quotes smart-dashes)
           #:exclude-tags '(style script)))
 
+(define not-more? (λ (x) (and (txexpr? x) (not (equal? 'more (get-tag x))))))
+
+(define (remove-more doc)
+  (let*-values
+      ([(content) (select* 'root doc)]
+       [(body) (filter not-more? content)])
+    body))
+
 (define (md . text)
   `(section ,@(parse-markdown (string-join text " " ))))
 

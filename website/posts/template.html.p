@@ -5,5 +5,5 @@
             #:theme-variant "light"
             #:contents `(article ((id "content"))
                                  ,@(make-top metas)
-                                 ,@(select* 'root doc))))
+                                 ,@(remove-more doc))))
 </html>
