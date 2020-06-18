@@ -13,10 +13,11 @@ TIDY = tidy -modify -config $(TIDY_CONFIG)
 default: render publish
 
 render:
-	raco pollen render $(INPUT)
+	raco pollen render -r $(INPUT)
 
 publish:
 	raco pollen publish $(INPUT) $(OUTPUT)
+	rm $(OUTPUT)/template.html
 	$(TIDY) $(OUTPUT)/*.html || true
 	$(TIDY) $(OUTPUT)/$(POSTS)/*.html || true
 
