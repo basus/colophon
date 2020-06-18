@@ -76,11 +76,14 @@
 ;; made more intelligent later.
 (define (make-index d)
   (define (summarize f)
-    (let ((cf f))
-      (if (indexable-source? cf)
-          (make-summary (cached-metas cf) (cached-doc cf)
-                        (->output-path cf))
-          "" )))
+    (if  (indexable-source? f)
+         (let* ([source-path f]
+                [metas (cached-metas source-path)]
+                [doc (cached-doc source-path)]
+                [output-path (->output-path source-path)] )
+           (make-summary metas doc output-path))
+           ""
+         ))
 
   (let* ((files (directory-list d #:build? #t))
          (summaries (map summarize files)) )
