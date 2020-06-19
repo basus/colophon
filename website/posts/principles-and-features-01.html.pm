@@ -2,7 +2,7 @@
 
 ◊(define-meta title "Key Principles and Features"
               started "2020-05-15"
-              modified "2020-06-03"
+              modified "2020-06-18"
               published "2020-06-05"
 )
 
@@ -16,7 +16,7 @@ features they imply.
 While Colophon is meant to be an experimental and new system, existing tools are
 used whenever possible. This allows us to use high-quality, existing systems instead of
 spending time and energy rolling our own (probably inferior) versions. For
-example, the UNIX `make` tool is used to check dependencies and generate
+example, the UNIX ◊code{make} tool is used to check dependencies and generate
 incremental builds, and the ◊a["http://www.html-tidy.org/"]{◊code{tidy}} tool is used to clean
 up generated HTML prior to publication.
 
