@@ -75,7 +75,7 @@ supports a bunch of different styles and will generate CSS for a particular
 style with the following incantation:
 
 ◊codeblock{
-pygmentize -S <style name> -f html -a .highlight
+  pygmentize -S <style name> -f html -a .highlight
 }
 
 I'm also working on a theming system for Colophon (spoilers!), but for now,

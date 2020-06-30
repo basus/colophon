@@ -1,8 +1,7 @@
 #lang racket
 
-(require racket/format
-         txexpr
-         pollen/cache pollen/core pollen/decode pollen/file
+(require txexpr
+         pollen/cache pollen/core pollen/file
          "common.rkt" "predicates.rkt")
 
 ;; Generate the top-matter. For posts, this is the title, subtitle, and relevant
