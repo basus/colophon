@@ -84,9 +84,13 @@
            (make-summary metas doc output-path))
            ""
          ))
+  (define (sort-by-modification p1 p2)
+    (> (file-or-directory-modify-seconds	p1)
+       (file-or-directory-modify-seconds	p2) ))
 
-  (let* ((files (directory-list d #:build? #t))
-         (summaries (map summarize files)) )
+  (let* ((unsorted-files (filter indexable-source? (directory-list d #:build? #t)))
+         (sorted-files (sort unsorted-files sort-by-modification))
+         (summaries (map summarize sorted-files)) )
     `(section ,@summaries))
   )
 
