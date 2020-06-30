@@ -5,7 +5,7 @@
          racket/string
          txexpr xml/path
          colophon/common
-         pollen/core pollen/decode pollen/template)
+         pollen/core pollen/decode pollen/unstable/pygments pollen/template)
 
 (define (root . items)
   (define (clean-break e) (decode-linebreaks e "\n"))
@@ -75,6 +75,14 @@
                  [ [id clss] `((class ,clss) (id ,id)) ]
                  )))
   `(body ,attrs ,nav ,contents)))
+
+(define (codeblock #:line-numbers? [line-numbers? #t]
+                   lang . lines)
+  (apply highlight
+         #:python-executable "python3"
+         #:line-numbers? line-numbers?
+         lang lines)
+  )
 
 (provide (all-defined-out))
 
