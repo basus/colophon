@@ -34,7 +34,7 @@
 
 (define (make-summary metas doc output-path
                       #:break-tag [break-tag more-tag])
-  (let* ((title    (select-from-metas 'title metas))
+  (let* ((title     (select-from-metas 'title metas))
          (subtitle  (select-from-metas 'subtitle metas))
          (started   (select-from-metas 'started metas))
          (published (select-from-metas 'published metas))
@@ -43,7 +43,8 @@
          (post      (path->string output-path))
 
          (title-txt
-          (if title `(h2 ((class "post-title")) ,title) ""))
+          (if title `(h2 ((class "post-title"))
+                         (a ((href ,post)) ,title)) ""))
          (start-txt
           (if started (format "Started on ~a." started) ""))
          (modified-txt
@@ -75,14 +76,12 @@
 ;; made more intelligent later.
 (define (make-index d)
   (define (summarize f)
-    (if  (indexable-source? f)
-         (let* ([source-path f]
-                [metas (cached-metas source-path)]
-                [doc (cached-doc source-path)]
-                [output-path (->output-path source-path)] )
-           (make-summary metas doc output-path))
-           ""
-         ))
+    (let* ([source-path f]
+           [metas (cached-metas source-path)]
+           [doc (cached-doc source-path)]
+           [output-path (->output-path source-path)] )
+      (make-summary metas doc output-path)))
+
   (define (sort-by-modification p1 p2)
     (> (file-or-directory-modify-seconds	p1)
        (file-or-directory-modify-seconds	p2) ))
