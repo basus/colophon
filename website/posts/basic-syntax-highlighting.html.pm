@@ -29,7 +29,7 @@ install Python 3 and then used ◊a["https://pypi.org/project/pip/"]{pip} to
 install Pygments. I aliased the bare commands to the Python 3 versions, and made
 sure that the ◊code{pygmentize} utility was on my ◊code{PATH}:
 
-◊codeblock[#:line-numbers? #f 'bash]{
+◊codeblock['bash]{
     # Set up Python3 using aliases
     alias python=$(which python3)
     alias pip=$(which pip3)
@@ -52,7 +52,6 @@ that sets the ◊code{python-executable} and passes on everything else to the
 underlying ◊code{highlight} function:
 
 ◊codeblock[#:line-numbers? #t 'racket]{
-
 (define (codeblock #:line-numbers? [line-numbers? #t]
                    lang . lines)
   (apply highlight
@@ -60,7 +59,6 @@ underlying ◊code{highlight} function:
          #:line-numbers? line-numbers?
          lang lines)
   )
-
 }
 
 I provided ◊code{#:line-numbers?} argument so that individual code blocks can
@@ -74,7 +72,7 @@ to add some CSS so that the HTML is colored and styled correctly. Pygments
 supports a bunch of different styles and will generate CSS for a particular
 style with the following incantation:
 
-◊codeblock{
+◊codeblock['bash]{
   pygmentize -S <style name> -f html -a .highlight
 }
 

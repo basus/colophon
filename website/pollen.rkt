@@ -70,7 +70,7 @@
                  )))
   `(body ,attrs ,nav ,contents)))
 
-(define (codeblock #:line-numbers? [line-numbers? #t]
+(define (codeblock #:line-numbers? [line-numbers? #f]
                    lang . lines)
   (apply highlight
          #:python-executable "python3"
