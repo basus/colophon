@@ -8,9 +8,8 @@ publication. This is in contrast to other static site generators like
 [Frog](https://github.com/greghendershott/frog),
 [Jekyll](https://jekyllrb.com/), or [Hugo](https://gohugo.io/). This package
 also provides several libraries that help with writing websites with Pollen. It
-is heavily inspired by and based the work of [Joel
-Dueck](https://joeldueck.com/), epecially [The
-Notebook](https://thenotepad.org/).
+is heavily inspired by and based the work of [Joel Dueck](https://joeldueck.com/),
+epecially [The Notebook](https://thenotepad.org/).
 
 ## Components
 
@@ -23,5 +22,6 @@ Colophon currently has the following components
   - Code for Colophon itself, found in the `colophon` subdirectory. Though most
     of this works with Pollen code, it implements features that are specific to
     a static site (for example, generating index pages for blog posts or tags).
-  - A website, built with Pollen and Colophon, found in the `website` directory.
-    This is an example of Colophon in action, and is used to guide development.
+  - [A website](https://colophon.basus.me), built with Pollen and Colophon,
+    found in the `website` directory. This is an example of Colophon in action,
+    and is used to guide development.
