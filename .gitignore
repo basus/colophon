@@ -1,4 +1,5 @@
 *.html
+deploy.sh
 compiled/
 _website/
 website/fonts/

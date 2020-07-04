@@ -11,7 +11,7 @@ POSTS = $(wildcard $(POSTDIR)/*.index.html.pm)
 TIDY_CONFIG = tidy.config
 TIDY = tidy -modify -config $(TIDY_CONFIG)
 
-default: render publish index.html index.html.pm
+default: render publish index.html
 
 render:
 	raco pollen render -r $(INPUT)
