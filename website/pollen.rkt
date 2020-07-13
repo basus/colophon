@@ -28,6 +28,9 @@
 (define (md . text)
   `(section ,@(parse-markdown (string-join text " " ))))
 
+(define (b . text)
+  `(strong ,@text))
+
 (define (navigation name . entries)
   (define first (link:title name) )
   (define links
