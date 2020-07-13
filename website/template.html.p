@@ -7,13 +7,11 @@
                              ,@(select* 'root doc))))
 
   <footer>
-    <p>&copy; Shrutarshi Basu 2020</p>
     <p>
-      This work is licensed under a
+      &copy; Shrutarshi Basu 2020. Unless otherwise noted, this work is licensed
+      under a
       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">
-        Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-        International License
-      </a>.
+        Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
     </p>
   </footer>
 
