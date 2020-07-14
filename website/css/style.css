@@ -14,23 +14,21 @@ html {
 
 #content {
     margin: 0 auto 5em auto;
+    padding: 0 2em;
     max-width: var(--max-width);
 }
 
-@media(max-width:var(--max-width)) {
-    #content {
-        padding: 10px;
-    }
-}
-
 h1 { font-size: 2em; }
-h2 { font-size: 1.5em; font-weight: normal; }
-h3 { font-size: 1.2em; font-style: italic; }
+h2 { font-size: 1.3em; font-weight: normal; }
+h3 { font-size: 1.1em; font-style: italic; }
 h1, h2, h3, h4, h5 {
     color: var(--text-hdr-color);
     font-family: "Merriweather Sans";
     margin-bottom: .1rem;
 }
+
+p + h2 { margin-bottom: 0.125em; }
+h2 + p { margin-top: 0; }
 
 p, ul li { font-family: "Merriweather"; font-size: 1em; line-height: 1.5em; }
 
@@ -49,6 +47,10 @@ pre, code {
     font-family: "Fira Code";
     font-weight: 400;
     background-color: var(--code-bg-color);
+}
+
+.highlight {
+    margin: 1em 2em;
 }
 
 a, a:active {
