@@ -1,8 +1,6 @@
 #lang racket
 
-(require racket/path
-         txexpr
-         pollen/file)
+(require racket/path txexpr pollen/file)
 
 (define (is-tag? t)
   (λ (x) (and (txexpr? x) (equal? t (get-tag x)))))

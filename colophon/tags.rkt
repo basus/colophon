@@ -1,7 +1,7 @@
 #lang racket
 
 (require (only-in markdown parse-markdown)
-         pollen/core pollen/decode pollen/unstable/pygments
+         pollen/decode pollen/unstable/pygments
          txexpr
          "predicates.rkt")
 

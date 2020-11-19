@@ -1,8 +1,6 @@
 #lang racket
 
-(require racket/string
-         txexpr xml/path
-         pollen/core pollen/decode)
+(require pollen/core)
 
 (define (directory d)
   (let* (
