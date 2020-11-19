@@ -1,8 +1,10 @@
 #lang racket
 
 (require txexpr
-         pollen/cache pollen/core pollen/file
-         "common.rkt" "predicates.rkt")
+         pollen/cache pollen/core pollen/file pollen/html5
+         (prefix-in tag: "tags.rkt")
+         (prefix-in link: "link.rkt")
+         "predicates.rkt")
 
 ;; Generate the top-matter. For posts, this is the title, subtitle, and relevant
 ;; dates (started, modification and publication).
@@ -33,7 +35,7 @@
       )))
 
 (define (make-summary metas doc output-path
-                      #:break-tag [break-tag more-tag])
+                      #:break-tag [break-tag tag:more-tag])
   (let* ((title     (select-from-metas 'title metas))
          (subtitle  (select-from-metas 'subtitle metas))
          (started   (select-from-metas 'started metas))
@@ -52,7 +54,7 @@
          (published-txt
           (if published (format "Published on ~a." published) ""))
          (excerpt-paras
-          (if excerpt excerpt (make-excerpt doc break-tag)))
+          (if excerpt excerpt (make-excerpt doc)))
          (meta-txt
           `(p ((class "post-meta"))
              ,(string-join (list start-txt modified-txt published-txt))))
@@ -68,9 +70,9 @@
           (hr))
     ))
 
-(define (make-excerpt doc break-tag)
+(define (make-excerpt doc #:break-tag [break-tag tag:more-tag])
   (takef (get-elements doc)
-         (lambda (e) (not (equal? (get-tag e) break-tag)))))
+         (not-tag? break-tag)))
 
 ;; Generate an index of posts. This relies on the Pollen cache but should be
 ;; made more intelligent later.
@@ -91,5 +93,50 @@
          (summaries (map summarize sorted-files)) )
     `(section ,@summaries))
   )
+
+;; Generate a navigation bar
+(define (make-navigation name . entries)
+  (define first (link:title name) )
+  (define links
+    (map link:directory entries))
+  `(nav (ul ,first ,@links)))
+
+(define (default-navigation)
+  `(header ,(make-navigation "Colophon" "Dir1" "Dir2" "Dir3")))
+
+;; Generate the <head> tag
+(define (head-with #:title [title (head:title)]
+                   #:fonts [fonts "/css/fonts.css"]
+                   #:style [style "/css/style.css"]
+                   #:theme [theme "/css/theme.css"])
+  `(head
+    ,@(meta:defaults)
+    ,title
+    ,@(head:stylesheets fonts style theme)))
+
+(define (default-head) (head-with))
+
+;; Generate the <body> tag
+(define (body-with #:id [id #f]
+                   #:theme-variant [thvar #f]
+                   #:class [cls #f]
+                   #:navigation [nav (default-navigation)]
+                   #:contents contents)
+  (let* ((th (if thvar (string-append "theme-" thvar) #f))
+
+         (clss (match* (cls th)
+                 [ [#f #f] #f ]
+                 [ [#f th] th ]
+                 [ [cl #f] cl ]
+                 [ [cl th] (string-join (list th cl) " ")]))
+
+         (attrs (match* (id clss)
+                  [ [#f #f] '() ]
+                  [ [id #f] `((id ,id)) ]
+                  [ [#f clss] `((class ,clss)) ]
+                  [ [id clss] `((class ,clss) (id ,id)) ]
+                  )))
+    `(body ,attrs ,nav ,contents)))
+
 
 (provide (all-defined-out))

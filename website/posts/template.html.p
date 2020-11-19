@@ -2,10 +2,11 @@
 <html lang="en">
   ◊(->html (head-with #:theme "/css/grayscale.css"))
   ◊(->html (body-with
+            #:navigation (navbar)
             #:theme-variant "light"
             #:contents `(article ((id "content"))
                                  ,@(make-top metas)
-                                 ,@(remove-more doc))))
+                                 ,@(remove-tag more-tag (select* 'root doc)))))
 
   <footer>
     <p>

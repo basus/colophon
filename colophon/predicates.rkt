@@ -4,6 +4,12 @@
          txexpr
          pollen/file)
 
+(define (is-tag? t)
+  (λ (x) (and (txexpr? x) (equal? t (get-tag x)))))
+
+(define (not-tag? t)
+  (λ (x) (and (txexpr? x) (not (equal? t (get-tag x))))))
+
 (define (prefix-path? path prefix)
   (string-prefix?
    (string-downcase (path->string (file-name-from-path path)))

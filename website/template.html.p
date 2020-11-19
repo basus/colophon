@@ -2,6 +2,7 @@
 <html lang="en">
   ◊(->html (head-with #:theme "/css/grayscale.css"))
   ◊(->html (body-with
+            #:navigation (navbar)
             #:theme-variant "light"
             #:contents `(div ((id "content"))
                              ,@(select* 'root doc))))
