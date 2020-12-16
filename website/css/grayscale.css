@@ -6,6 +6,7 @@
     --text-alt-color: #f7f7f7;
     --text-sel-color: #222222;
     --text-hdr-color: #000000;
+    --code-text-color: #222222;
     --code-bg-color: #fbfbfb;
     --link-color: #0077aa;
     --link-visited-color: #66adcc;
@@ -21,6 +22,7 @@
     --text-alt-color: #333333;
     --text-sel-color: #222222;
     --text-hdr-color: #66adcc;
+    --code-text-color: #222222;
     --code-bg-color: #fbfbfb;
     --link-color: #66adcc;
     --link-visited-color: #0077aa;

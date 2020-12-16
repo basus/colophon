@@ -19,11 +19,11 @@
 
 (define (codeblock #:line-numbers? [line-numbers? #f]
                    lang . lines)
-  (apply highlight
-         #:python-executable "python3"
-         #:line-numbers? line-numbers?
-         lang lines)
-  )
+  (attr-join (apply highlight
+                      #:python-executable "python3"
+                      #:line-numbers? line-numbers?
+                      lang lines)
+             'class "codeblock"))
 
 (define more-tag 'more)
 
