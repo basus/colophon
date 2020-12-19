@@ -39,7 +39,7 @@
           #:txexpr-elements-proc breakless-paragraphs
           #:block-txexpr-proc wrap-hanging-quotes
           #:string-proc (compose1 smart-quotes smart-dashes)
-          #:exclude-tags '(style script)))
+          #:exclude-tags '(style script pre code codeblock)))
 
 ;; Utility Functions on Tags
 
